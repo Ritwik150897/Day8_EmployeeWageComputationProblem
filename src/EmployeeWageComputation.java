@@ -11,59 +11,19 @@ public class EmployeeWageComputation {
         ewc.totalMonthlyWage();
     }
 
-    void isAbsent(){
-        double isAbsent = Math.floor(Math.random() * 10) % 3;
-        if(isAbsent == FULL_TIME){
-            System.out.println("Employee is Present.");
-        } else if (isAbsent == PART_TIME) {
-            System.out.println("Employee is Present Part-Time.");
-        } else {
-            System.out.println("Employee is Absent.");
-        }
-    }
-
-    void dailyWageCalculation(){
-        double isAbsent = Math.floor(Math.random() * 10) % 3;
-        if(isAbsent == 1){
-            empHrs = 8;
-            System.out.println("Employee Daily Wage is: " + empHrs * WAGE_PER_HOUR);
-        } else if (isAbsent == 2) {
-            empHrs = 4;
-            System.out.println("Employee Daily Wage is: " + empHrs * WAGE_PER_HOUR);
-        } else {
-            System.out.println("Employee Daily Wage is: " + empHrs * WAGE_PER_HOUR);
-        }
-    }
-
-    void empAttendance(){
-        double isAbsent = Math.floor(Math.random() * 10) % 3;
-        switch ((int) isAbsent){
-            case 1:
-                empHrs = 8;
-                System.out.println("Employee is Present for Full-Time.");
-                System.out.println("Employee Daily Wage is: " + empHrs * WAGE_PER_HOUR);
-                break;
-
-            case 2:
-                empHrs = 4;
-                System.out.println("Employee is Present for Part-time.");
-                System.out.println("Employee Daily Wage is: " + empHrs * WAGE_PER_HOUR);
-                break;
-
-            default:
-                System.out.println("Employee is Absent.");
-                System.out.println("Employee Daily Wage is: " + empHrs * WAGE_PER_HOUR);
-                break;
-        }
+    double todaysAttendance(){
+        return Math.floor(Math.random() * 10) % 3;
     }
 
     void monthlyWage(){
         while(totalWorkingDays < TOTAL_WORKING_DAYS && empHrs < MAX_WORKING_HRS){
+
             totalWorkingDays++;
 
-            double isAbsent = Math.floor(Math.random() * 10) % 3;
+            EmployeeWageComputation e = new EmployeeWageComputation();
+            double attendance = e.todaysAttendance();
 
-            switch ((int) isAbsent){
+            switch ((int) attendance){
                 case 1:
                     empHrs = 8;
                     dailyWage = empHrs * WAGE_PER_HOUR;
